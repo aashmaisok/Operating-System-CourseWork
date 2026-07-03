@@ -1,26 +1,32 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-#define NUM_FRAMES 3   // how many pages can fit in RAM at once
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        printf("Usage: %s <number_of_frames>\n", argv[0]);
+        return 1;
+    }
 
-int main() {
+    int NUM_FRAMES = atoi(argv[1]);
+
     int pages[] = {1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5};
     int n = sizeof(pages) / sizeof(pages[0]);
+
+    int frames[NUM_FRAMES];
+    for (int i = 0; i < NUM_FRAMES; i++) {
+        frames[i] = -1;
+    }
+
+    int front = 0;
+    int page_faults = 0;
+    int page_hits = 0;
 
     printf("Page reference sequence: ");
     for (int i = 0; i < n; i++) {
         printf("%d ", pages[i]);
     }
     printf("\n");
-
-    // FIFO page replacement simulation
-    int frames[NUM_FRAMES];
-    for (int i = 0; i < NUM_FRAMES; i++) {
-        frames[i] = -1;  // -1 means empty frame
-    }
-
-    int front = 0;         // points to the oldest frame (for FIFO replacement)
-    int page_faults = 0;
-    int page_hits = 0;
+    printf("Number of frames: %d\n", NUM_FRAMES);
 
     printf("\n--- FIFO Page Replacement ---\n");
 
@@ -28,7 +34,6 @@ int main() {
         int page = pages[i];
         int found = 0;
 
-        // check if page is already in a frame (hit)
         for (int j = 0; j < NUM_FRAMES; j++) {
             if (frames[j] == page) {
                 found = 1;
@@ -40,7 +45,6 @@ int main() {
             page_hits++;
             printf("Page %d -> HIT\n", page);
         } else {
-            // page fault: place page in frame, replacing oldest if full
             frames[front] = page;
             front = (front + 1) % NUM_FRAMES;
             page_faults++;
