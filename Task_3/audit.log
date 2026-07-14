@@ -1,9 +1,0 @@
-[2026-07-14 20:25:12] user=aashma\    action=REGISTER   target=-                    result=SUCCESS
-[2026-07-14 20:27:55] user=aashma     action=LOGIN      target=-                    result=FAIL:bad_credentials
-[2026-07-14 20:35:48] user=aashma     action=REGISTER   target=-                    result=SUCCESS
-[2026-07-14 20:36:10] user=aashma     action=LOGIN      target=-                    result=SUCCESS
-[2026-07-14 20:39:03] user=aashma     action=CREATE     target=notes.txt            result=SUCCESS
-[2026-07-14 20:39:48] user=aashma     action=READ       target=notes.txt            result=SUCCESS
-[2026-07-14 20:41:16] user=aashma     action=CHMOD      target=notes.txt            result=SUCCESS
-[2026-07-14 20:43:15] user=aashma     action=WRITE      target=notes.txt            result=SUCCESS
-[2026-07-14 20:44:11] user=aashma     action=DELETE     target=notes.txt            result=SUCCESS
