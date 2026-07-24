@@ -114,6 +114,3 @@ gcc client.c -o client && ./client
 # or: ./client <server_ip>
 ```
 
----
-
-
